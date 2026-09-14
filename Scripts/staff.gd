@@ -1,6 +1,7 @@
 extends Node2D
 
 const BULLET := preload("res://Scenes/bullet.tscn")
+const HOMING_BULLET := preload("res://Scenes/homing_bullet.tscn")
 
 @onready var animation_player = $AnimatedSprite2D
 
@@ -39,7 +40,7 @@ func _process(delta):
 
 
 func shoot():
-	var new_bullet = BULLET.instantiate()
+	var new_bullet = HOMING_BULLET.instantiate()
 	
 	get_tree().root.add_child(new_bullet)
 	

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dblshrwg2o4vc"]
+
+[ext_resource type="Script" uid="uid://byttwasrconw1" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://brtt3h76ep6kt" path="res://Assets/dumpus_sprite.png" id="1_hghv2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dacj3"]
+radius = 11.045361
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1707579218]
+script = ExtResource("1_1f0kj")
+
+[node name="DumpusSprite" type="Sprite2D" parent="." unique_id=654941549]
+modulate = Color(0.82697845, 0.15667307, 0, 1)
+texture = ExtResource("1_hghv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1995874871]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_dacj3")

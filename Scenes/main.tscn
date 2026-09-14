@@ -4,26 +4,34 @@
 [ext_resource type="Texture2D" uid="uid://dh1rq2pke4j2b" path="res://Assets/cube.png" id="2_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://c36nlfpio5u2y" path="res://Assets/dumpus_house.png" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://ctbxgw0m8jbql" path="res://Scenes/upgrade.tscn" id="4_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://dblshrwg2o4vc" path="res://Scenes/enemy.tscn" id="5_kry3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra2i3"]
 size = Vector2(640, 57)
 
 [node name="Main" type="Node2D" unique_id=1868022394]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=36067439]
+[node name="Background" type="Sprite2D" parent="." unique_id=864478671]
+modulate = Color(0.35307974, 0.6461976, 0.6136495, 1)
+z_index = -50
+position = Vector2(320.49997, 178)
+scale = Vector2(20.15625, 11.25)
+texture = ExtResource("2_bo1nx")
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=36067439]
 position = Vector2(95.99997, 115)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=597792059]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=597792059]
 position = Vector2(224.00003, 218.5)
 shape = SubResource("RectangleShape2D_ra2i3")
 
-[node name="CharacterBody2D" parent="." unique_id=13518905 instance=ExtResource("1_jjgbg")]
-position = Vector2(331, 287)
-
-[node name="Cube" type="Sprite2D" parent="." unique_id=1455814699]
-position = Vector2(320.49997, 331.5)
+[node name="Cube" type="Sprite2D" parent="Ground" unique_id=1455814699]
+position = Vector2(224.5, 216.5)
 scale = Vector2(20.15625, 1.6562498)
 texture = ExtResource("2_bo1nx")
+
+[node name="Player" parent="." unique_id=13518905 instance=ExtResource("1_jjgbg")]
+position = Vector2(331, 287)
 
 [node name="DumpusHouse" type="Sprite2D" parent="." unique_id=2136069297]
 z_index = -10
@@ -32,3 +40,6 @@ texture = ExtResource("3_8gbba")
 
 [node name="Area2D" parent="." unique_id=1564626523 instance=ExtResource("4_jjvhh")]
 position = Vector2(198, 286)
+
+[node name="Enemy" parent="." unique_id=1535344257 instance=ExtResource("5_kry3j")]
+position = Vector2(556, 103)

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0lj4ibj4h0lv"]
+
+[ext_resource type="Script" uid="uid://cvnc8f1ni5kod" path="res://Scripts/homing_bullet.gd" id="1_0s35j"]
+[ext_resource type="Texture2D" uid="uid://u608yhochy33" path="res://Assets/circle.png" id="1_uj3q4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0s35j"]
+radius = 3.0
+
+[node name="HomingBullet" type="Area2D" unique_id=864879883]
+script = ExtResource("1_0s35j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=614318173]
+shape = SubResource("CircleShape2D_0s35j")
+
+[node name="Circle" type="Sprite2D" parent="." unique_id=1482554024]
+scale = Vector2(0.1875, 0.1875)
+texture = ExtResource("1_uj3q4")
