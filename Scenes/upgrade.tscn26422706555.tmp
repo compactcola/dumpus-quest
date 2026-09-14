@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ctbxgw0m8jbql"]
+
+[ext_resource type="Texture2D" uid="uid://qy4exou3p8gg" path="res://Assets/dumpus_icon.png" id="1_47it6"]
+[ext_resource type="Script" uid="uid://dd8an4kwtbqn4" path="res://Scripts/upgrade.gd" id="1_f5ow3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ra2i3"]
+radius = 7.0
+
+[node name="Upgrade" type="Area2D" unique_id=1564626523]
+script = ExtResource("1_f5ow3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1667894181]
+scale = Vector2(1.9200006, 1.9200006)
+shape = SubResource("CircleShape2D_ra2i3")
+
+[node name="DumpusIcon" type="Sprite2D" parent="." unique_id=896323931]
+scale = Vector2(0.24000007, 0.24000007)
+texture = ExtResource("1_47it6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
