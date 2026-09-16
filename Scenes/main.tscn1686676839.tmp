@@ -41,7 +41,7 @@ position = Vector2(315, 241)
 
 [node name="SpawnLeft" type="Marker2D" parent="." unique_id=768816781]
 unique_name_in_owner = true
-position = Vector2(-119, 285)
+position = Vector2(-128, 285)
 
 [node name="SpawnRight" type="Marker2D" parent="." unique_id=65315527]
 unique_name_in_owner = true

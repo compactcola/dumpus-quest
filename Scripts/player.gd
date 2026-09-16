@@ -8,6 +8,7 @@ const UP_DIRECTION := Vector2.UP
 
 var stamina = 100.0
 var regen_stamina = false
+var stamina_regen_delay = 0.0
 var sprint_speed = 1.0
 
 func _physics_process(delta):
@@ -39,10 +40,15 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("sprint") and stamina > 0:
 		sprint_speed = 1.5
-		stamina -= 75.0 * delta
+		stamina -= 95.0 * delta
+		stamina_regen_delay = 1.0
 	else:
 		sprint_speed = 1.0
-		stamina += 2.0 * delta
+		
+		if stamina_regen_delay > 0.0:
+			stamina_regen_delay -= delta
+		else:
+			stamina += 50.0 * delta
 	
 	if stamina < 100.0:
 		%StaminaBar.show()

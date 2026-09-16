@@ -5,11 +5,11 @@ extends CharacterBody2D
 
 var health = 5
 var speed = 100
+var is_flying = true
 
 func _physics_process(delta):
 	var direction = (house.position - global_position).normalized()
 	position += direction * speed * delta
-	move_and_slide()
 	
 	if direction.x < 0.0:
 		%Sprite.flip_h = true
@@ -17,8 +17,11 @@ func _physics_process(delta):
 		%Sprite.flip_h = false
 	
 	## gravity
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if is_flying == false:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+		
+	move_and_slide()
 
 func take_damage():
 	health -= 1
