@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://c02ips3lhwqa7"]
+
+[ext_resource type="Script" uid="uid://dhnbfj328k5ri" path="res://Scripts/house.gd" id="1_n87ef"]
+[ext_resource type="Texture2D" uid="uid://c36nlfpio5u2y" path="res://Assets/dumpus_house.png" id="1_okrnj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ra2i3"]
+size = Vector2(88, 74)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87ef"]
+bg_color = Color(0.019607844, 0.10980392, 0.23921569, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+shadow_color = Color(0.019607844, 0.10980392, 0.23921569, 1)
+shadow_size = 1
+shadow_offset = Vector2(0.08, 0.755)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jr7h"]
+bg_color = Color(0.6784314, 0.07058824, 0.14901961, 1)
+
+[node name="House" type="Area2D" unique_id=1419494048]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_n87ef")
+
+[node name="HouseHurtBox" type="CollisionShape2D" parent="." unique_id=1114499464]
+unique_name_in_owner = true
+position = Vector2(0, 27)
+shape = SubResource("RectangleShape2D_ra2i3")
+
+[node name="DumpusHouse" type="Sprite2D" parent="." unique_id=353036502]
+z_index = -20
+texture = ExtResource("1_okrnj")
+
+[node name="HouseHealth" type="ProgressBar" parent="." unique_id=145932438]
+unique_name_in_owner = true
+offset_left = -69.0
+offset_top = -69.0
+offset_right = 70.0
+offset_bottom = -60.0
+theme_override_styles/background = SubResource("StyleBoxFlat_n87ef")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3jr7h")
+value = 100.0
+show_percentage = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

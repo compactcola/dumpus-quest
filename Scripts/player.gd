@@ -4,8 +4,11 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-
 const UP_DIRECTION := Vector2.UP
+
+var stamina = 100.0
+var regen_stamina = false
+var sprint_speed = 1.0
 
 func _physics_process(delta):
 	
@@ -32,9 +35,23 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	# MOVEMENT
+	%StaminaBar.value = stamina
+	
+	if Input.is_action_pressed("sprint") and stamina > 0:
+		sprint_speed = 1.5
+		stamina -= 75.0 * delta
+	else:
+		sprint_speed = 1.0
+		stamina += 2.0 * delta
+	
+	if stamina < 100.0:
+		%StaminaBar.show()
+	else:
+		%StaminaBar.hide()
+	
 	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * sprint_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()

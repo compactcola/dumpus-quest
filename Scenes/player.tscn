@@ -38,7 +38,17 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgqql"]
+bg_color = Color(0.019607844, 0.10980392, 0.23921569, 1)
+shadow_color = Color(0.019607844, 0.10980392, 0.23921569, 1)
+shadow_size = 1
+shadow_offset = Vector2(0.08, 0.755)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fkybt"]
+bg_color = Color(0.15686275, 0.9529412, 0.36078432, 1)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=13518905]
+collision_layer = 0
 script = ExtResource("1_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695838210]
@@ -56,3 +66,16 @@ autoplay = "idle"
 unique_name_in_owner = true
 z_index = -1
 position = Vector2(0, 7)
+
+[node name="StaminaBar" type="ProgressBar" parent="." unique_id=1688534920]
+unique_name_in_owner = true
+offset_left = -20.333328
+offset_top = -34.0
+offset_right = 21.0
+offset_bottom = -28.0
+theme_override_styles/background = SubResource("StyleBoxFlat_vgqql")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fkybt")
+value = 100.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="StaminaBar" unique_id=580356066]

@@ -30,17 +30,15 @@ func _process(delta):
 	
 	## SWINGING STAFF
 	if Input.is_action_just_pressed("swing") and can_swing:
-		animation_player.play("swing")
+		pass
+		##animation_player.play("swing")
 	else:
 		pass
 		##animation_player.queue("idle")
-		
-		
-		
 
 
 func shoot():
-	var new_bullet = HOMING_BULLET.instantiate()
+	var new_bullet = BULLET.instantiate()
 	
 	get_tree().root.add_child(new_bullet)
 	
