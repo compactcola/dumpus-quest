@@ -26,4 +26,5 @@ func _physics_process(delta):
 func take_damage(damage):
 	health -= damage
 	if health <= 0:
+		Global.beans += 5
 		queue_free()

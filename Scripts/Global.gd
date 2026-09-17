@@ -18,6 +18,10 @@ var wave = 0
 var wave_spawning = false
 var waves_paused = true
 
+var beans = 0
+var house_health = 100.0
+var repair_cost = 10
+
 @export var spawn_delay = 0.5 
 @export var wave_delay = 3.0
 
