@@ -8,7 +8,18 @@ const HOMING_BULLET := preload("res://Scenes/homing_bullet.tscn")
 var can_shoot = true
 var can_swing = true
 var shoot_delay = 2.0
+var shot_damage = 1.0
 var i = 0.0
+
+func _ready():
+	Global.upgrade.connect(_on_upgrade)
+
+func _on_upgrade(upgrade):
+	match upgrade:
+		"cast speed":
+			shoot_delay -= shoot_delay * 0.25
+		"spell damage":
+			shot_damage += shot_damage * 0.30
 
 func _process(delta):
 	var mouse_pos = get_global_mouse_position()
@@ -36,11 +47,11 @@ func _process(delta):
 		pass
 		##animation_player.queue("idle")
 
-
 func shoot():
 	var new_bullet = BULLET.instantiate()
 	
 	get_tree().root.add_child(new_bullet)
 	
+	new_bullet.damage = shot_damage
 	new_bullet.global_position = %ShootingPoint.global_position
 	new_bullet.global_rotation = %ShootingPoint.global_rotation

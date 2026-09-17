@@ -2,14 +2,26 @@ extends CharacterBody2D
 
 @onready var anim_player = %DumpusBody
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -300.0
+var speed = 200.0
+var jump_velocity = -300.0
 const UP_DIRECTION := Vector2.UP
 
 var stamina = 100.0
 var regen_stamina = false
 var stamina_regen_delay = 0.0
 var sprint_speed = 1.0
+
+func _ready():
+	Global.upgrade.connect(_on_upgrade)
+
+func _on_upgrade(upgrade):
+	match upgrade:
+		"move speed":
+			speed += speed * 0.2
+		"jump height":
+			jump_velocity += jump_velocity * 0.1
+		"stamina":
+			stamina += stamina * 0.2
 
 func _physics_process(delta):
 	
@@ -33,14 +45,14 @@ func _physics_process(delta):
 
 	# JUMPING
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 	
 	# MOVEMENT
 	%StaminaBar.value = stamina
 	
 	if Input.is_action_pressed("sprint") and stamina > 0:
-		sprint_speed = 1.5
 		stamina -= 95.0 * delta
+		sprint_speed = 1.5
 		stamina_regen_delay = 1.0
 	else:
 		sprint_speed = 1.0
@@ -50,16 +62,14 @@ func _physics_process(delta):
 		else:
 			stamina += 50.0 * delta
 	
-	if stamina < 100.0:
-		%StaminaBar.show()
-	else:
-		%StaminaBar.hide()
+	%StaminaBar.show()
+
 	
 	var direction = Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * SPEED * sprint_speed
+		velocity.x = direction * speed * sprint_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 	move_and_slide()
 	
 	var is_falling = velocity.y > 0.0 and not is_on_floor()

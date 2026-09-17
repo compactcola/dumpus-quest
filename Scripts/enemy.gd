@@ -5,7 +5,7 @@ extends CharacterBody2D
 
 var health = 5
 var speed = 100
-var is_flying = true
+var is_flying = false
 
 func _physics_process(delta):
 	var direction = (house.position - global_position).normalized()
@@ -23,7 +23,7 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
-func take_damage():
-	health -= 1
+func take_damage(damage):
+	health -= damage
 	if health <= 0:
 		queue_free()

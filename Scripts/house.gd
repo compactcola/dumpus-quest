@@ -8,4 +8,14 @@ func _physics_process(delta):
 		health -= 10 * delta * overlapping_mobs.size()
 	
 	%HouseHealth.value = health
-	health += 1 * delta
+	
+	if Global.waves_paused == false:
+		health += 1 * delta
+	
+	if health >= 99.0:
+		%HouseHealth.hide()
+	else:
+		%HouseHealth.show()
+		
+	if health <= 0.0:
+		Global.game_over()
