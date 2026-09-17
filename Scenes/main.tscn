@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1hwqwmbbs6ro"]
 
-[ext_resource type="Script" uid="uid://kgxop7wnukfq" path="res://Scenes/main.gd" id="1_21xkr"]
+[ext_resource type="Script" uid="uid://kgxop7wnukfq" path="res://Scripts/main.gd" id="1_21xkr"]
 [ext_resource type="PackedScene" uid="uid://542guijtk1u4" path="res://Scenes/player.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://b3tjy2w6plmdi" path="res://Assets/ForestBackground.png" id="1_kry3j"]
 [ext_resource type="Texture2D" uid="uid://dh1rq2pke4j2b" path="res://Assets/cube.png" id="2_bo1nx"]
@@ -37,7 +37,7 @@ texture = ExtResource("2_bo1nx")
 position = Vector2(331, 287)
 
 [node name="House" parent="." unique_id=1419494048 instance=ExtResource("4_jjvhh")]
-position = Vector2(315, 241)
+position = Vector2(309, 241)
 
 [node name="SpawnLeft" type="Marker2D" parent="." unique_id=768816781]
 unique_name_in_owner = true
@@ -46,3 +46,23 @@ position = Vector2(-119, 285)
 [node name="SpawnRight" type="Marker2D" parent="." unique_id=65315527]
 unique_name_in_owner = true
 position = Vector2(766, 283)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=165090347]
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD" unique_id=1585432816]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 12.0
+offset_top = 2.0
+offset_right = -12.0
+offset_bottom = 52.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="HUD/MarginContainer" unique_id=612017642]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Wave 1
+Coins 0"
+
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=708141240]
+unique_name_in_owner = true

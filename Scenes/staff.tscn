@@ -76,9 +76,6 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ra2i3"]
-b = Vector2(21, -9)
-
 [node name="Staff" type="Node2D" unique_id=285302495]
 script = ExtResource("1_ycvyx")
 
@@ -90,8 +87,3 @@ autoplay = "idle"
 [node name="ShootingPoint" type="Marker2D" parent="AnimatedSprite2D" unique_id=257740338]
 unique_name_in_owner = true
 position = Vector2(13, -7)
-
-[node name="Area2D" type="Area2D" parent="." unique_id=383210197]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1379682152]
-shape = SubResource("SegmentShape2D_ra2i3")
