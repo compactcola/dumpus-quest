@@ -88,7 +88,7 @@ text = "Wave 1
 [node name="Label2" type="Label" parent="HUD/MarginContainer" unique_id=1949568066]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Beans: 0
+text = "x0
 "
 horizontal_alignment = 2
 

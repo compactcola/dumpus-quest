@@ -50,7 +50,7 @@ func _on_show_upgrade_choices(choices):
 		)
 		%ChoicesGrid.add_child(btn)
 		
-	if Global.house_health != 100.0:
+	if Global.house_health < 100.0:
 		%RepairHouse.show()
 		%RepairHouse.pressed.connect(func():
 			if Global.beans >= Global.repair_cost:
@@ -58,6 +58,7 @@ func _on_show_upgrade_choices(choices):
 				Global.repair_cost *= 2
 				Global.house_health = 100
 				
+				%Label2.text = "Beans: " + str(Global.beans)
 				%RepairHouse.hide()
 		)
 	else:
